@@ -1,0 +1,61 @@
+---
+ja:
+  data:
+    formats:
+      default: '%Y/%m/%d'
+      long: '%Y年%m月%d日(%a)'
+      short: '%m/%d'
+  time:
+    formats:
+      default: '%Y/%m/%d %H:%M:%S'
+      long: '%Y年%m月%d日(%a) %H時%M分%S秒 %z'
+      short: '%Y/%m/%d %H:%M'
+  activerecord:
+    models:
+      user: 'ユーザー'
+      post: '投稿'
+      comment: 'コメント'
+      favorite: 'お気に入り'
+      vote: '投票'
+      best_answer: 'ベスト断捨流'
+      category: 'カテゴリ'
+    attributes:
+      user:
+        id: 'ID'
+        name: '名前'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード(確認)'
+        role: '権限'
+      post:
+        id: 'ID'
+        title: 'タイトル'
+        body: '来歴'
+        name: '投稿者'
+        img: 'サムネイル'
+        deadline: '締め切り'
+        status: '状態'
+        created_at: '作成日時'
+      comment:
+        content: 'コメント'
+        status: '状態'
+      vote:
+        status: '状態'
+      category:
+        name: 'カテゴリ名'
+  arrributes:
+    created_at: '作成日'
+    updated_at: '更新日'
+  helpers:
+    select:
+      prompt: 選択してください
+    submit:
+      create: 登録する
+      submit: 保存する
+      update: 更新する
+      login: ログイン
+  enums:
+    user:
+      role:
+        general: '一般'
+        admin: '管理者'

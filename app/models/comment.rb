@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
 
   with_options presence: true do
     validates :content
-    validates :tatus
+    validates :status
   end
 
   enum role: { none: 0, trash: 1, untrash: 2 }

@@ -1,15 +1,25 @@
-<div class="container">
-  <ul class="nav nav-lb-tab mb-6 justify-content-center" id="tab" role="tablist">
-    <li class="nav-item ms-0" role="presentation">
-    </li>
-    <li class="nav-item" role="presentation">
-    </li>
-    <li class="nav-item" role="presentation">
-    </li>
-  </ul>
-
-  <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <!-- 検索フォーム -->
+      <form>
+      </form>
+    </div>
   </div>
-  <div class="mx-auto">
+  
+  <!-- 掲示板一覧 -->
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <% if @posts.present? %>
+          <%= render @posts %>
+        <% else %>
+          <p><%= t('.no_result') %></p>
+        <% end %>
+      </div>
+      <!-- ページネーション -->
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,123 @@
+---
+ja:
+  defaults:
+    login: 'ログイン'
+    register: '登録する'
+    logout: 'ログアウト'
+    post: '投稿'
+    search: '検索'
+    search_word: '検索ワード'
+    profile: 'プロフィール'
+    update: '更新する'
+    users: 'ユーザー一覧'
+    boards: '掲示板一覧'
+    unspecified: '指定なし'
+    show: '詳細'
+    edit: '編集'
+    delete: '削除'
+    message:
+      require_login: 'ログインしてください'
+      created: '%{item}を作成しました'
+      not_created: '%{item}を作成できませんでした'
+      updated: "%{item}を更新しました"
+      not_updated: "%{item}を更新できませんでした"
+      deleted: "%{item}を削除しました"
+      delete_confirm: '削除しますか？'
+      not_authorized: '権限がありません'
+      bookmarked: "%{item}しました"
+      unbookmarked: "%{item}を外しました"
+    index: '掲示板一覧'
+    no_results: '掲示板がありません'
+    not_authenticated: 'ログインしてください'
+  users:
+    new:
+      title: 'ユーザー登録'
+      to_login_page: 'ログインページへ'
+    create:
+      success: 'ユーザー登録が完了しました'
+      fail: 'ユーザー登録に失敗しました'
+  user_sessions:
+    new:
+      title: 'ログイン'
+      to_register_page: '登録ページへ'
+      forget_password: 'パスワードをお忘れの方はこちら'
+    create:
+      success: 'ログインしました'
+      fail: 'ログインに失敗しました'
+    destroy:
+      success: 'ログアウトしました'
+  boards:
+    index:
+      title: '掲示板一覧'
+      no_result: '掲示板がありません'
+    new:
+      title: '掲示板作成'
+    create:
+      success: '掲示板を作成しました'
+      fail: '掲示板を作成できませんでした'
+    bookmarks:
+      title: 'ブックマーク一覧'
+      no_result: 'ブックマーク中の掲示板がありません'
+    show:
+      title: '掲示板詳細'
+      cancel: 'キャンセル'
+      update: '更新'
+    edit:
+      title: '掲示板編集'
+    destroy:
+      success: '掲示板を削除しました'
+  profiles:
+    show:
+      title: 'プロフィール'
+      edit: '編集'
+      mail: 'メール'
+      full_name: '氏名'
+      avatar: 'アバター'
+    edit:
+      title: 'プロフィール編集'
+    update:
+      success: 'ユーザーを更新しました'
+      fail: 'ユーザーを更新できませんでした'
+  comments:
+    success: 'コメントを作成しました'
+    fail: 'コメントを作成できませんでした'
+  password_resets:
+    new:
+      title: 'パスワードリセット申請'
+      submit: '送信'
+    create:
+      success: 'パスワードリセット手順を送信しました'
+    edit:
+      title: 'パスワードリセット'
+    update:
+      success: 'パスワードが変更されました'
+      fail: 'パスワードの変更に失敗しました'
+  admin:
+    user_sessions:
+      new:
+        title: 'ログイン'
+      create:
+        success: 'ログインしました'
+        fail: 'ログインに失敗しました'
+      destroy:
+        success: 'ログアウトしました'
+    dashboards:
+      index:
+        title: 'ダッシュボード'
+    users:
+      index:
+        title: 'ユーザー一覧'
+      show:
+        title: 'ユーザー詳細'
+      edit:
+        title: 'ユーザー編集'
+    boards:
+      index:
+        title: '掲示板一覧'
+      show:
+        title: '掲示板詳細'
+      edit:
+        title: '掲示板編集'
+        
+
+    
