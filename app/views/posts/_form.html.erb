@@ -1,0 +1,26 @@
+<%= form_with model: post, local: true do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :'title', class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <%= f.label :img %>
+  <%= f.file_field :img, onchange: 'previewFileWithId(preview)', class: 'form-control mb-3', accept: 'image/*' %>
+  <%= f.hidden_field :img_cache %>
+  </div>
+  <div class='mt-3 mb-3'>
+    <%= image_tag post.img.url,
+                  id: 'preview',
+                  size: '300x200' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :'body', class: "form-control", rows: 10 %>
+  </div>
+  <div class="form-group">
+    <%= f.label :deadline %>
+    <%= f.datetime_field :deadline, class: 'form-control', rows: 10 %>
+  </div>
+  <%= f.submit (t 'defaults.register'), class: "btn btn-primary", name: 'commit' %>
+<% end %>

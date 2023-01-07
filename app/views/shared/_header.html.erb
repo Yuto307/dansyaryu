@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-default">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/">断捨流</a>
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= image_tag 'logo-dansyaryu', :size =>'120x30' %>
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -13,12 +15,14 @@
           <li class="dropdown ms-2 d-inline-block">
             <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
               <div class="avatar avatar-md">
+                <%= image_tag 'sample.jpeg', class: 'rounded-circle avatar-sm' %>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               <div class="dropdown-item">
                 <div class="d-flex">
                   <div class="avatar avatar-md">
+                    <%= image_tag 'sample.jpeg', class: 'rounded-circle avatar-sm' %>
                   </div>
                   <div class="ms-3 lh-1">
                     <h5 class="mb-1"><%= current_user.name %></h5>

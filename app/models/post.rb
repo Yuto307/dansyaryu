@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  mount_uploader :img, ImgUploader
   belongs_to :user
 
   has_many :post_categories, dependent: :destroy
@@ -10,7 +11,7 @@ class Post < ApplicationRecord
   with_options presence: true do
     validates :title
     validates :body
-    validates :tatus
+    validates :status
   end
 
   enum role: { draft: 0, published: 1, closing: 2, trash: 3, untrash: 4 }
