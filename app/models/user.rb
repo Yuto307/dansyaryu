@@ -16,4 +16,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   enum role: { normal: 0, admin: 1 }
+
+  def own?(object)
+    id == object.user_id
+  end
 end

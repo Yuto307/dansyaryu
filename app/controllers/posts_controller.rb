@@ -21,9 +21,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
+  end
 
-  def destroy; end
+  def destroy
+    @post.destroy!
+    redirect_to posts_path, success: t('defaults.message.deleted', item: Post.model_name.human)
+  end
 
   private
 

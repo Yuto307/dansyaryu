@@ -6,5 +6,5 @@ class Vote < ApplicationRecord
     validates :status
   end
 
-  enum role: { none: 0, trash: 1, untrash: 2 }
+  enum status: { unanswered: 0, trash: 1, untrash: 2 }
 end
