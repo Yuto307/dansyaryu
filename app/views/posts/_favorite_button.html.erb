@@ -1,0 +1,9 @@
+<ul class='crud-menu-btn list-inline float-right'>
+  <li class="list-inline-item">
+    <% if current_user.bookmark?(board) %>
+      <%= render 'boards/unbookmark', board: board %>
+    <% else %>
+      <%= render 'boards/bookmark', board: board %>
+    <% end %>
+  </li>
+</ul>
