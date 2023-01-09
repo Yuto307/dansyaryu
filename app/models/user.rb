@@ -20,4 +20,16 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
+
+  def favorite(post)
+    favorites.create!(post_id: post.id)
+  end
+
+  def unfavorite(post)
+    Favorite.where(user_id: id, post_id: post.id).delete
+  end
+
+  def favorite?(post)
+    Favorite.where(user_id: id, post_id: post.id).exists?
+  end
 end
