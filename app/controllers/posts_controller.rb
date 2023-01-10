@@ -7,6 +7,15 @@ class PostsController < ApplicationController
     @posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 
+  def favorites
+    @q = current_user.favorite_posts.ransack(params[:q])
+    @favorite_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+  end
+
+  def search
+    @results = @q.result
+  end
+
   def new
     @post = Post.new
   end

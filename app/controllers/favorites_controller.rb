@@ -1,13 +1,25 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user
+
   def create
-    @post = Post.find(params[:post_id])
-    current_user.favorite(@post)
-    # redirect_back fallback_location: root_path, success: t('defaults.message.favoriteed', item: Favorite.model_name.human)
+    @favorite = current_user.favorites.build(favorite_params)
+    @post = @favorite.post
+    if @favorite.valid?
+      @favorite.save
+      redirect_to post_path(@post)
+    end
   end
 
   def destroy
-    @post = current_user.favorites.find(params[:id]).post
-    current_user.unfavorite(@post)
-    # redirect_back fallback_location: root_path, success: t('defaults.message.unfavorited', item: Favorite.model_name.human)
+    @favorite = Favorite.find(params[:id])
+    @post = @favorite.post
+    if @favorite.destroy
+      redirect_to post_path(@post)
+    end
+  end
+
+  private
+  def favorite_params
+    params.permit(:post_id)
   end
 end

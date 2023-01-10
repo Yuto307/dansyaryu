@@ -1,4 +1,6 @@
 class UserSessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+  
   def new; end
 
   def create
@@ -12,6 +14,6 @@ class UserSessionsController < ApplicationController
   
   def destroy
     logout
-    redirect_to root_path
+    redirect_to login_path
   end
 end
