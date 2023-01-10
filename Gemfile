@@ -33,7 +33,6 @@ gem 'kaminari', git: 'https://github.com/kaminari/kaminari.git'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'ransack'
 gem 'font-awesome-sass'
-gem 'jquery-rails'
 
 gem 'bootstrap'
 

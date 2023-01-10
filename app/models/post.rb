@@ -16,7 +16,7 @@ class Post < ApplicationRecord
 
   enum role: { draft: 0, published: 1, closing: 2, trash: 3, untrash: 4 }
 
-  def favorited_by?(user)
+  def favorited_by(user)
     Favorite.find_by(user_id: user.id, post_id: id)
   end
 end
