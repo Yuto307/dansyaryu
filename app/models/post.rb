@@ -19,4 +19,8 @@ class Post < ApplicationRecord
   def favorited_by(user)
     Favorite.find_by(user_id: user.id, post_id: id)
   end
+
+  def voted_by(user)
+    Vote.find_by(user_id: user.id, post_id: id)
+  end
 end

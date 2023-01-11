@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create edit update destroy], shallow: true
     collection do
       get :favorites
+      get :votes
       get :search
     end
     resources :favorites, only: %i[create destroy]
