@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'carrierwave'
+gem 'enum_help'
 gem 'kaminari', git: 'https://github.com/kaminari/kaminari.git'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'ransack'

@@ -16,6 +16,15 @@
                   <%= render 'crud_menus', post: @post %>
               <% else %>
                   <%= render 'posts/favorite_button', post: @post %>
+                  <div class="row mb-3">
+                    <div class="col-lg-8 offset-lg-2">
+                      <%= form_with model: @vote, url: [@post, @vote], id: 'new_vote' do |f| %>
+                        <%= f.label :status %>
+                        <%= f.select :status, Vote.statuses.keys.map {|k| [I18n.t("enums.vote.status.#{k}"), k]} %>
+                        <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+                      <% end %>
+                    </div>
+                  </div>
               <% end %>
               <ul class="list-inline">
                 <li class="list-inline-item">by <%= @post.user.name %></li>

@@ -1,0 +1,8 @@
+---
+ja:
+  enums:
+    vote:
+      status:
+        unanswer: "未回答"
+        trash: "捨てていい"
+        untrash: "捨てないで"

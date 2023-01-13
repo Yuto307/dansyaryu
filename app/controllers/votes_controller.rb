@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: %i[edit destroy]
+  before_action :set_vote, only: %i[edit update destroy]
   def create
     @vote = current_user.votes.create(vote_params)
   end
@@ -7,13 +7,11 @@ class VotesController < ApplicationController
   def edit; end
 
   def update
-    @vote = current_user.votes.find(params[:id])
-    if @vote.update(vote_update_params)
-      render json: { vote: @vote }, status: :ok
+    if @vote.update(vote_params)
+      redirect_to @vote, success: t('defaults.message.updated', item: Vote.model_name.human)
     else
-      render json: { vote: @vote, errors:
-      { messages: @vote.errors.full_messages } }, 
-      status: :bad_request
+      flash.now[:danger] = t('defaults.message.not_updated', item: Vote.model_name.human)
+      render :edit
     end
   end
 
@@ -33,6 +31,6 @@ class VotesController < ApplicationController
   end
 
   def vote_update_params
-    params.require(:vote).permit(:content)
+    params.require(:vote).permit(:status)
   end
 end

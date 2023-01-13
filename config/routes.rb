@@ -6,9 +6,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :posts do
     resources :comments, only: %i[create edit update destroy], shallow: true
+    resources :votes, only: %i[create edit update destroy], shallow: true
     collection do
       get :favorites
-      get :votes
       get :search
     end
     resources :favorites, only: %i[create destroy]
