@@ -34,6 +34,18 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
+    @vote = Vote.new
+  end
+
+  def edit; end
+
+  def update
+    if @post.update(post_params)
+      redirect_to @post, success: t('defaults.message.updated', item: Post.model_name.human)
+    else
+      flash.now[:danger] = t('defaults.message.not_updated', item: Post.model_name.human)
+      render :edit
+    end
   end
 
   def destroy
@@ -57,7 +69,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     return unless @post.user_id != @current_user.id
 
-    redirect_to boards_path
+    redirect_to posts_path
   end
 
 end
