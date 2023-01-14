@@ -6,3 +6,8 @@ ja:
         unanswer: "未回答"
         trash: "捨てていい"
         untrash: "捨てないで"
+    comment:
+      status:
+        unanswer: "未回答"
+        trash: "捨てていい"
+        untrash: "捨てないで"

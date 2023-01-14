@@ -6,6 +6,7 @@
     <h3 class="small"><%= comment.user.name %></h3>
     <div id="js-comment-<%= comment.id %>">
       <%= simple_format(comment.content) %>
+      <%= simple_format(comment.status) %>
     </div>
     <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">
       <textarea id="js-textarea-comment-<%= comment.id %>" class="form-control mb-1"><%= comment.content %></textarea>
