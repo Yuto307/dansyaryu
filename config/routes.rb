@@ -14,4 +14,12 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :admin do
+    root to: 'dashboards#index'
+    get 'login', to: 'user_sessions#new'
+    post 'login', to: 'user_sessions#create'
+    delete 'logout', to: 'user_sessions#destroy'
+    resources :users, only: %i[index edit show update destroy]
+    resources :boards, only: %i[index edit show update destroy]
+  end
 end
