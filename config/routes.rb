@@ -18,8 +18,9 @@ Rails.application.routes.draw do
     root to: 'dashboards#index'
     get 'login', to: 'user_sessions#new'
     post 'login', to: 'user_sessions#create'
-    delete 'logout', to: 'user_sessions#destroy'
+    get 'logout', to: 'user_sessions#destroy'
     resources :users, only: %i[index edit show update destroy]
-    resources :boards, only: %i[index edit show update destroy]
+    resources :posts, only: %i[index edit show update destroy]
+    resources :categories, only: %i[new create index edit show update destroy]
   end
 end

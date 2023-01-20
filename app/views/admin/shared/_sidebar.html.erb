@@ -21,10 +21,10 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <li class="nav-item">
-          <%= link_to admin_boards_path, class: "nav-link #{is_active_controller('admin/boards')}" do %>
+          <%= link_to admin_posts_path, class: "nav-link #{is_active_controller('admin/posts')}" do %>
             <i class="nav-icon far fa-file"></i>
             <p>
-              <%= t('defaults.boards') %>
+              <%= t('defaults.posts') %>
             </p>
           <% end %>
         </li>
@@ -33,6 +33,14 @@
             <i class="nav-icon far fa-user"></i>
             <p>
               <%= t('defaults.users') %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to admin_categories_path, class: "nav-link #{is_active_controller('admin/categories')}" do %>
+            <i class="nav-icon far fa-file"></i>
+            <p>
+              <%= t('defaults.categories') %>
             </p>
           <% end %>
         </li>
