@@ -8,6 +8,15 @@
       </form>
     </div>
   </div>
+
+  <h3 class="side-title">カテゴリー</h3>
+  <ul>
+    <% @categories.each do |category| %>
+      <li>
+        <%= link_to category.name, posts_path(category_id: category.id) %>
+      </li>
+    <% end %>
+  </ul>
   
   <!-- 掲示板一覧 -->
   <div class="row">

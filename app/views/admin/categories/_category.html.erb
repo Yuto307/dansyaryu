@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <%= category.id %>
+  </td>
+  <td>
+    <%= category.name %>
+  </td>
+  <td>
+    <%= l category.created_at, format: :short %>
+  </td>
+  <td>
+    <%= link_to t('defaults.show'), admin_category_path(category), class: 'btn btn-info' %>
+    <%= link_to t('defaults.edit'), edit_admin_category_path(category), class: 'btn btn-success' %>
+    <%= link_to t('defaults.delete'), admin_category_path(category), method: :delete, data: { confirm: t('defaults.message.delete_confirm') }, class: 'btn btn-danger' %>
+  </td>
+</tr>

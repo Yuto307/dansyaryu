@@ -3,8 +3,14 @@ class PostsController < ApplicationController
   before_action :ensure_user, only: %i[edit update destroy]
 
   def index
+    @categories = Category.all
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true).includes(:user, :comments).order(created_at: :desc).page(params[:page])
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @posts = @category.posts.order(created_at: :desc).page(params[:page])
+    else
+      @posts = @q.result(distinct: true).includes(:user, :comments).order(created_at: :desc).page(params[:page])
+    end
   end
 
   def favorites
@@ -62,7 +68,7 @@ class PostsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def post_params
-    params.require(:post).permit(:title, :body, :img, :img_cache, :deadline).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :body, :img, :img_cache, { category_ids: [] }, :deadline).merge(user_id: current_user.id)
   end
 
   def ensure_user

@@ -17,5 +17,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
+require("admin-lte");
 require("jquery")
 window.$ = jQuery;

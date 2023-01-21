@@ -28,7 +28,13 @@
               <% end %>
               <ul class="list-inline">
                 <li class="list-inline-item">by <%= @post.user.name %></li>
-                <li class="list-inline-item"><%= l @post.created_at, format: :short %></li>
+                <li class="list-inline-item"><%= l @post.created_at, format: :short %></li></br>
+                <li class="list-inline-item">
+                  <%= "カテゴリー" %>
+                  <% @post.categories.each do |item| %>
+                    <%= item.name %>
+                  <% end %>
+                </li>
               </ul>
             </div>
           </div>
