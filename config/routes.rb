@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i[create edit update destroy], shallow: true
     resources :votes, only: %i[create edit update destroy], shallow: true
+    resources :categories, except: [:new, :show]
     collection do
       get :favorites
       get :search
@@ -14,6 +15,12 @@ Rails.application.routes.draw do
     resources :favorites, only: %i[create destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  namespace :mypage do
+    root 'profile#show'
+    resource :profile, only: %i[show update]
+    resource :password_change, only: %i[show update]
+  end
+
   namespace :admin do
     root to: 'dashboards#index'
     get 'login', to: 'user_sessions#new'
