@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i[create edit update destroy], shallow: true
     resources :votes, only: %i[create edit update destroy], shallow: true
-    resources :categories, except: [:new, :show]
     collection do
       get :favorites
       get :search
