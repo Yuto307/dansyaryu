@@ -1,6 +1,13 @@
 ---
 ja:
   enums:
+    post:
+      status:
+        draft: "下書き保存"
+        published: "公開する"
+        closing: "締め切り"
+        trash: "捨てました"
+        untrash: "捨てませんでした"
     vote:
       status:
         unanswer: "未回答"

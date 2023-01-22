@@ -68,7 +68,7 @@ class PostsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def post_params
-    params.require(:post).permit(:title, :body, :img, :img_cache, { category_ids: [] }, :deadline).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :body, :img, :img_cache, { category_ids: [] }, :status, :deadline).merge(user_id: current_user.id)
   end
 
   def ensure_user
