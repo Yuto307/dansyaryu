@@ -25,6 +25,14 @@
             <% post.categories.each do |item| %>
               <%= item.name %>
             <% end %>
+          </li></br>
+          <li class="list-inline-item">
+            <%= "ステータス" %>
+            <%= post.status %>
+          </li></br>
+          <li class="list-inline-item">
+            <%= "締切" %>
+            <%= post.deadline %>
           </li>
         </ul>
         <p class="card-text"><%= post.body %></p>

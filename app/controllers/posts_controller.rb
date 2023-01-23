@@ -46,6 +46,10 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
+    authorize(@post)
+
+    @post.assign_attributes(post_params)
+    @post.adjust_status
     if @post.update(post_params)
       redirect_to @post, success: t('defaults.message.updated', item: Post.model_name.human)
     else

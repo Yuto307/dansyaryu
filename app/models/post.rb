@@ -16,6 +16,33 @@ class Post < ApplicationRecord
 
   enum status: { published: 0, draft: 1, closing: 2, trash: 3, untrash: 4 }
 
+  scope :past_closing, -> { where('deadline <= ?', Time.current) }
+
+  # 締切時間が過ぎているか
+  def closed?
+    Time.current >= deadline
+  end
+
+  #draft(下書き)であればreturn
+  #締切時間が過ぎていれば締切。過ぎていなければ公開のままにする
+  def adjust_status
+    return if draft?
+
+    self.status = if closed?
+                    :closing
+                  else
+                    :published
+                  end
+  end
+
+  def message_on_closing
+    if published?
+      '記事を公開しました'
+    elsif closing?
+      '記事を締め切りました'
+    end
+  end
+
   def favorited_by(user)
     Favorite.find_by(user_id: user.id, post_id: id)
   end
