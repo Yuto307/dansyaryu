@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[edit update destroy]
-  before_action :ensure_user, only: %i[edit update destroy]
+  before_action :set_post, only: %i[edit update judgment destroy]
+  before_action :ensure_user, only: %i[edit update judgment destroy]
 
   def index
     @categories = Category.all
@@ -21,6 +21,8 @@ class PostsController < ApplicationController
   def search
     @results = @q.result
   end
+
+  def judgment; end
 
   def new
     @post = Post.new

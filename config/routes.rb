@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       get :favorites
       get :search
     end
+    member do
+      get :judgment
+    end
     resources :favorites, only: %i[create destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

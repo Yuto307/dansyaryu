@@ -32,7 +32,7 @@
           </li></br>
           <li class="list-inline-item">
             <%= "締切" %>
-            <%= post.deadline %>
+            <%= l post.deadline, format: :short %>
           </li>
         </ul>
         <p class="card-text"><%= post.body %></p>

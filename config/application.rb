@@ -36,7 +36,7 @@ module Dansyaryu
     config.generators.system_tests = nil
 
     #デフォルトのタイムゾーンを日本に
-    config.timezone = 'Tokyo'
+    config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
     #デフォルトの言語を日本語に
