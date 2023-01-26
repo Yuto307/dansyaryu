@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[edit update destroy]
-  before_action :ensure_user, only: %i[edit update destroy]
+  before_action :set_post, only: %i[edit update judgment destroy]
+  before_action :ensure_user, only: %i[edit update judgment destroy]
 
   def index
     @categories = Category.all
@@ -21,6 +21,8 @@ class PostsController < ApplicationController
   def search
     @results = @q.result
   end
+
+  def judgment; end
 
   def new
     @post = Post.new
@@ -46,6 +48,10 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
+    authorize(@post)
+
+    @post.assign_attributes(post_params)
+    @post.adjust_status
     if @post.update(post_params)
       redirect_to @post, success: t('defaults.message.updated', item: Post.model_name.human)
     else
@@ -68,7 +74,7 @@ class PostsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def post_params
-    params.require(:post).permit(:title, :body, :img, :img_cache, { category_ids: [] }, :deadline).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :body, :img, :img_cache, { category_ids: [] }, :status, :deadline).merge(user_id: current_user.id)
   end
 
   def ensure_user

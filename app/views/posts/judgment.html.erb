@@ -1,0 +1,53 @@
+<% content_for(:title, @post.title) %>
+<div class="container pt-5">
+  <div class="row mb-3">
+    <div class="col-lg-8 offset-lg-2">
+      <h1><%= t('.title') %></h1>
+      <!-- 掲示板内容 -->
+      <article class="card">
+        <div class="card-body">
+          <div class='row'>
+            <div class='col-md-3'>
+              <%= image_tag @post.img.url, class: 'card-img-top img-fluid', size: '300x200' %>
+            </div>
+            <div class='col-md-9'>
+              <h3 class="d-inline"><%= @post.title %></h3>
+              <% if current_user.own?(@post) %>
+                  <%= render 'crud_menus', post: @post %>
+              <% else %>
+                  <%= render 'posts/favorite_button', post: @post %>
+                  <div class="row mb-3">
+                    <div class="col-lg-8 offset-lg-2">
+                      <%= form_with model: @vote, url: [@post, @vote], id: 'new_vote' do |f| %>
+                        <%= f.label :status %>
+                        <%= f.select :status, Vote.statuses.keys.map {|k| [I18n.t("enums.vote.status.#{k}"), k]} %>
+                        <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+                      <% end %>
+                    </div>
+                  </div>
+              <% end %>
+              <ul class="list-inline">
+                <li class="list-inline-item">by <%= @post.user.name %></li>
+                <li class="list-inline-item"><%= l @post.created_at, format: :short %></li></br>
+                <li class="list-inline-item">
+                  <%= "カテゴリー" %>
+                  <% @post.categories.each do |item| %>
+                    <%= item.name %>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p><%= simple_format(@post.body) %></p>
+        </div>
+      </article>
+    </div>
+  </div>
+  <%= form_with model: @post, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="form-group">
+      <%= f.label :status %> </br>
+      <%= f.collection_radio_buttons :status, Post.statuses_i18n.slice(:trash, :untrash), :first , :last %>
+    </div>
+    <%= f.submit (t 'defaults.register'), class: "btn btn-primary", name: 'commit' %>
+  <% end %>
