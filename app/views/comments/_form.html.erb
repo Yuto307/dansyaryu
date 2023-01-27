@@ -1,8 +1,8 @@
 <div class="row mb-3">
   <div class="col-lg-8 offset-lg-2">
-    <%= form_with model: comment, url: [post, comment], id: 'new_comment' do |f| %>
+    <%= form_with model: comment, url: [post, comment], local: false,  id: 'new_comment' do |f| %>
       <%= f.label :status %> </br>
-      <%= f.select :status, Comment.statuses.keys.map {|k| [I18n.t("enums.comment.status.#{k}"), k]} %> </br>
+      <%= f.collection_radio_buttons :status, Vote.statuses_i18n.slice(:trash, :untrash), :first , :last %> </br>
       <%= f.label :content %>
       <%= f.text_area :content, class: 'form-control mb-3', id: 'js-new-comment-content', row: 4, placeholder: Comment.human_attribute_name(:content) %>
       <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
