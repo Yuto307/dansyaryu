@@ -1,7 +1,9 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit destroy]
   def create
-    @comment = current_user.comments.create(comment_params)
+    @comment = current_user.comments.build(comment_params)
+    @comment.save
+    redirect_back fallback_location: root_path
   end
 
   def edit; end
@@ -20,6 +22,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = current_user.comments.find(params[:id]) # current_userのコメント
     @comment.destroy!
+    redirect_back fallback_location: root_path
   end
 
   private
