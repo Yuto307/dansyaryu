@@ -32,6 +32,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, success: t('.success')
+      NearDeadlineMailer.near_deadline(current_user).deliver
     else
       flash.now[:danger] = (t '.fail')
       render :new
