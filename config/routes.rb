@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'logout', to: 'user_sessions#destroy'
   resources :users, only: %i[new create]
   resources :posts do
-    resources :comments, only: %i[create edit update destroy], shallow: true
+    resources :comments, only: %i[create edit update destroy], shallow: true do
+      resources :best_answers, only: %i[create destroy]
+    end
     resources :votes, only: %i[create edit update destroy], shallow: true
     resource :closes, controller: 'posts/closes', only: %i[update]
     collection do
