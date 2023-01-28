@@ -32,4 +32,16 @@ class User < ApplicationRecord
   def favorite?(post)
     Favorite.where(user_id: id, post_id: post.id).exists?
   end
+
+  def best_answer(comment)
+    favorites.create!(comment_id: comment.id)
+  end
+
+  def usually_answer(comment)
+    BestAnswer.where(user_id: id, comment_id: comment.id).delete
+  end
+
+  def best_answer?(comment)
+    BestAnswer.where(user_id: id, comment_id: comment.id).exists?
+  end
 end

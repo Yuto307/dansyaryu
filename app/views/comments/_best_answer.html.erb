@@ -1,0 +1,6 @@
+<%= button_to comment_best_answers_path(comment_id: comment.id),
+            id: "js-best_answer-button-for-comment-#{comment.id}",
+            method: :post,
+            remote: true do %>
+  <%= icon 'far', 'star' %>
+<% end %>

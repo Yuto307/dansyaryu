@@ -1,13 +1,25 @@
 class BestAnswersController < ApplicationController
+  before_action :authenticate_user
+
   def create
-    @comment = Comment.find(params[:comment_id])
-    current_user.best_answer(@comment)
-    # redirect_back fallback_location: root_path, success: t('defaults.message.best_answer', item: Favorite.model_name.human)
+    @best_answer = current_user.best_answers.build(best_answer_params)
+    @comment = @best_answer.comment
+    if @best_answer.valid?
+      @best_answer.save
+      redirect_back fallback_location: root_path
+    end
   end
 
   def destroy
-    @comment = current_user.best_answers.find(params[:id]).comment
-    current_user.normal_answer(@comment)
-    # redirect_back fallback_location: root_path, success: t('defaults.message.normal_answer', item: Favorite.model_name.human)
+    @best_answer = BestAnswer.find(params[:id])
+    @comment = @best_answer.comment
+    if @best_answer.destroy
+      redirect_back fallback_location: root_path
+    end
+  end
+
+  private
+  def best_answer_params
+    params.permit(:comment_id)
   end
 end
