@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @categories = Category.all
-    @q = Post.ransack(params[:q])
+    @q = Post.where.not(status: :draft).ransack(params[:q])
     if params[:category_id]
       @category = Category.find(params[:category_id])
       @posts = @category.posts.order(created_at: :desc).page(params[:page])
@@ -32,7 +32,6 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       redirect_to posts_path, success: t('.success')
-      NearDeadlineMailer.near_deadline(current_user).deliver
     else
       flash.now[:danger] = (t '.fail')
       render :new
