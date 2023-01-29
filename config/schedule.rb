@@ -35,3 +35,7 @@ set :output, "#{Rails.root}/log/cron.log"
 every :hour do
   rake 'post_status:update_post_status'
 end
+
+every 1.day, at: '9am' do
+  rake 'near_deadline:near_deadline_alert'
+end
