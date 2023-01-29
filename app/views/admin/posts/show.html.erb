@@ -17,12 +17,20 @@
           <td><%= @post.title %></td>
         </tr>
         <tr>
-          <th scope="row"><%= post.human_attribute_name(:full_name) %></th>
-          <td><%= @post.user.decorate.full_name %></td>
+          <th scope="row"><%= Post.human_attribute_name(:name) %></th>
+          <td><%= @post.user.name %></td>
         </tr>
         <tr>
           <th scope="row"><%= Post.human_attribute_name(:body) %></th>
           <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Post.human_attribute_name(:status) %></th>
+          <td><%= @post.status %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= Post.human_attribute_name(:deadline) %></th>
+          <td><%= l @post.deadline, format: :short  %></td>
         </tr>
         <tr>
           <th scope="row"><%= Post.human_attribute_name(:created_at) %></th>
