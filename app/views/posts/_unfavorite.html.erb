@@ -1,4 +1,4 @@
-<%= button_to post_favorite_path(post,post.favorited_by(current_user)),
+<%= link_to post_favorite_path(post,post.favorited_by(current_user)),
             id: "js-favorite-button-for-post-#{post.id}",
             method: :delete,
             remote: true do %>

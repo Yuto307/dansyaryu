@@ -1,4 +1,4 @@
-<%= button_to best_answer_path(current_user.best_answers.find_by(comment_id: comment.id)),
+<%= link_to best_answer_path(current_user.best_answers.find_by(comment_id: comment.id)),
             id: "js-favorite-button-for-comment-#{comment.id}",
             method: :delete,
             remote: true do %>

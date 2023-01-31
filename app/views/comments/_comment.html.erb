@@ -24,7 +24,7 @@
           </a>
         </li>
         <li class="list-inline-item">
-          <%= button_to comment_path(comment), 
+          <%= link_to comment_path(comment), 
             id: 'js-delete-comment-button',
             method: :delete,
             data: { confirm: t('defaults.message.delete_confirm') },
