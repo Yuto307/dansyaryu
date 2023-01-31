@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorite_posts, through: :favorites, source: :post
   has_many :votes, dependent: :destroy
   has_many :best_answers, dependent: :destroy
 
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   end
 
   def unfavorite(post)
-    Favorite.where(user_id: id, post_id: post.id).delete
+    favorite_posts.delete(post)
   end
 
   def favorite?(post)
