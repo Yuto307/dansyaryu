@@ -5,6 +5,7 @@
 
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
+console.log('string')
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import 'bootstrap'
@@ -12,11 +13,10 @@ import '../src/application.scss'
 
 import '@fortawesome/fontawesome-free/js/all';
 
-require("@rails/ujs").start()
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
 require("admin-lte");
 require("jquery")
-window.$ = jQuery;

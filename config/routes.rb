@@ -9,7 +9,6 @@ Rails.application.routes.draw do
     resources :comments, only: %i[create edit update destroy], shallow: true do
       resources :best_answers, only: %i[create destroy]
     end
-    resources :votes, only: %i[create edit update destroy], shallow: true
     resource :closes, controller: 'posts/closes', only: %i[update]
     collection do
       get :favorites
@@ -18,8 +17,9 @@ Rails.application.routes.draw do
     member do
       get :judgment
     end
-    resources :favorites, only: %i[create destroy]
   end
+  resources :favorites, only: %i[create destroy]
+  resources :votes, only: %i[create edit update destroy], shallow: true
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :mypage do
     root 'profile#show'
