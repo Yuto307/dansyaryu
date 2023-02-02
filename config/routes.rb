@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
   end
   resources :favorites, only: %i[create destroy]
-  resources :votes, only: %i[create edit update destroy], shallow: true
+  resources :votes, only: %i[create update destroy], shallow: true
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace :mypage do
     root 'profile#show'

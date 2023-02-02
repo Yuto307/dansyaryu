@@ -1,23 +1,30 @@
 class VotesController < ApplicationController
-  before_action :set_vote, only: %i[edit update destroy]
   def create
-    @vote = current_user.votes.create(vote_params)
+    @post = Post.find(params[:post_id])
+    if status == 'trash'
+      current_user.trash(@post)
+      redirect_back fallback_location: root_path
+    elsif status == 'untrash'
+      current_user.untrash(@post)
+      redirect_back fallback_location: root_path
+    end
   end
 
-  def edit; end
-
   def update
-    if @vote.update(vote_params)
-      redirect_to @vote, success: t('defaults.message.updated', item: Vote.model_name.human)
-    else
-      flash.now[:danger] = t('defaults.message.not_updated', item: Vote.model_name.human)
-      render :edit
+    @post = current_user.votes.find(params[:id]).post
+    if status == 'trash'
+      current_user.update_trash(@post)
+      redirect_back fallback_location: root_path
+    elsif status == 'untrash'
+      current_user.update_untrash(@post)
+      redirect_back fallback_location: root_path
     end
   end
 
   def destroy
-    @vote = current_user.votes.find(params[:id]) # current_userのコメント
-    @vote.destroy!
+    @post = current_user.votes.find(params[:id]).post
+    current_user.unvote(@post)
+    redirect_back fallback_location: root_path
   end
 
   private
@@ -26,11 +33,7 @@ class VotesController < ApplicationController
     params.require(:vote).permit(:status).merge(post_id: params[:post_id])
   end
 
-  def set_vote
-    @vote = Vote.find_by(id: params[:id])
-  end
-
   def vote_update_params
-    params.require(:vote).permit(:status)
+    params.require(:vote).permit(:status).merge(post_id: params[:post_id])
   end
 end
