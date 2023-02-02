@@ -1,0 +1,6 @@
+<%= link_to vote_path(post_id: post.id, status: 'untrash'),
+            id: "js-untrash-button-for-post-#{post.id}",
+            method: :patch,
+            remote: true do %>
+  <%= "やっぱり捨てないで" %>
+<% end %>
