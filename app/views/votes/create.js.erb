@@ -1,8 +1,2 @@
-if status == 'trash'
-  $("#js-trash-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/delete_trash', post: @post)) %>");
-  $("#js-untrash-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/update_untrash', post: @post)) %>");
-elsif status == 'untrash'
-  $("#js-trash-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/update_trash', post: @post)) %>");
-  $("#js-untrash-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/delete_untrash', post: @post)) %>");
-end
-
+$("#js-vote-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/unvote', post: @post)) %>");
+$("#js-vote-button-for-post-<%= @post.id %>").remove()

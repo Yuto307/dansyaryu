@@ -1,11 +1,7 @@
 <ul class='crud-menu-btn list-inline float-right'>
   <li class="list-inline-item">
-    <% if current_user.vote?(post) && current_user.trash?(post) %>
-      <%= render 'posts/delete_trash', post: post %>
-      <%= render 'posts/update_untrash', post: post %>
-    <% elsif current_user.vote?(post) && current_user.untrash?(post) %>
-      <%= render 'posts/update_trash', post: post %>
-      <%= render 'posts/delete_untrash', post: post %>
+    <% if current_user.vote?(post) %>
+      <%= render 'posts/unvote', post: post %>
     <% else %>
       <%= render 'posts/trash', post: post %>
       <%= render 'posts/untrash', post: post %>

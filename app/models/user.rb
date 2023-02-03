@@ -35,32 +35,8 @@ class User < ApplicationRecord
     Favorite.where(user_id: id, post_id: post.id).exists?
   end
 
-  def trash(post)
-    votes.create!(post_id: post.id, status: trash)
-  end
-
-  def update_trash(post)
-    votes.update!(post_id: post.id, status: trash)
-  end
-
-  def untrash(post)
-    votes.create!(post_id: post.id, status: untrash)
-  end
-
-  def update_untrash(post)
-    votes.update!(post_id: post.id, status: untrash)
-  end
-
   def unvote(post)
     vote_posts.delete(post)
-  end
-
-  def trash?(post)
-    Vote.where(user_id: id, post_id: post.id).trash
-  end
-
-  def untrash?(post)
-    Vote.where(user_id: id, post_id: post.id)untrash
   end
 
   def vote?(post)
