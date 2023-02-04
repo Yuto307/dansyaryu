@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorite_posts, through: :favorites, source: :post
   has_many :votes, dependent: :destroy
+  has_many :vote_posts, through: :votes, source: :post
   has_many :best_answers, dependent: :destroy
 
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
@@ -32,6 +33,14 @@ class User < ApplicationRecord
 
   def favorite?(post)
     Favorite.where(user_id: id, post_id: post.id).exists?
+  end
+
+  def unvote(post)
+    vote_posts.delete(post)
+  end
+
+  def vote?(post)
+    Vote.where(user_id: id, post_id: post.id).exists?
   end
 
   def best_answer(comment)
