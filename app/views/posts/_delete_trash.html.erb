@@ -1,6 +1,0 @@
-<%= link_to vote_path(current_user.votes.find_by(post_id: post.id)),
-            id: "js-trash-button-for-post-#{post.id}",
-            method: :delete,
-            remote: true do %>
-  <%= "投票を撤回する" %>
-<% end %>
