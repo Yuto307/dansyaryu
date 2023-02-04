@@ -7,17 +7,34 @@ class PostsController < ApplicationController
     @q = Post.where.not(status: :draft).ransack(params[:q])
     if params[:category_id]
       @category = Category.find(params[:category_id])
-      @posts = @category.posts.order(created_at: :desc).page(params[:page])
+      @posts = @category.posts.where.not(status: :draft).order(created_at: :desc).page(params[:page])
     else
       @posts = @q.result(distinct: true).includes(:user, :comments).order(created_at: :desc).page(params[:page])
     end
   end
 
   def favorites
-    @q = current_user.favorite_posts.ransack(params[:q])
-    @favorite_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @categories = Category.all
+    @q = current_user.favorite_posts.where.not(status: :draft).ransack(params[:q])
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @favorite_posts = @category.posts.where.not(status: :draft).order(created_at: :desc).page(params[:page])
+    else
+      @favorite_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    end
   end
 
+  def drafts
+    @categories = Category.all
+    @q = current_user.posts.where(status: :draft).ransack(params[:q])
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @draft_posts = @category.posts.where.order(created_at: :desc).page(params[:page])
+    else
+      @draft_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    end
+  end
+  
   def search
     @results = @q.result
   end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resource :closes, controller: 'posts/closes', only: %i[update]
     collection do
       get :favorites
+      get :drafts
       get :search
     end
     member do

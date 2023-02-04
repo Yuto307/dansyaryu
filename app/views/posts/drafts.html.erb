@@ -4,7 +4,7 @@
     <div class="col-lg-10 offset-lg-1">
       <!-- 検索フォーム -->
       <form>
-        <%= render 'search_form', url: favorites_posts_path %>
+        <%= render 'search_form', url: drafts_posts_path %>
       </form>
     </div>
   </div>
@@ -17,19 +17,19 @@
       </li>
     <% end %>
   </ul>
-
+  
   <!-- 掲示板一覧 -->
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% if @favorite_posts.present? %>
-          <%= render @favorite_posts %>
+        <% if @draft_posts.present? %>
+          <%= render @draft_posts %>
         <% else %>
           <p><%= t('.no_result') %></p>
         <% end %>
       </div>
       <!-- ページネーション -->
-      <%= paginate @favorite_posts %>
+      <%= paginate @draft_posts %>
     </div>
   </div>
 </div>
