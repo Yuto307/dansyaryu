@@ -1,2 +1,1 @@
-$("#js-vote-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/trash', post: @post)) %>");
-$("#js-vote-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/untrash', post: @post)) %>");
+$("#js-vote-button-for-post-<%= @post.id %>").replaceWith("<%= j(render('posts/vote_button', post: @post)) %>");
