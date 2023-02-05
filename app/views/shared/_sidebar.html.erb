@@ -1,0 +1,68 @@
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <!-- Brand Logo -->
+  <%= link_to root_path, class: 'navbar-brand' do %>
+    <%= image_tag 'logo-dansyaryu', :size =>'250x50' %>
+  <% end %>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+      </div>
+      <div class="info">
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link #{is_active_controller('admin/posts')}" do %>
+            <p>
+              <%= "新規投稿" %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link #{is_active_controller('admin/users')}" do %>
+            <p>
+              <%= "投稿済み" %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link #{is_active_controller('admin/categories')}" do %>
+            <p>
+              <%= "下書き" %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link #{is_active_controller('admin/categories')}" do %>
+            <p>
+              <%= "お気に入り" %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link #{is_active_controller('admin/categories')}" do %>
+            <p>
+              <%= "捨てたもの" %>
+            </p>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to '#', class: "nav-link #{is_active_controller('admin/categories')}" do %>
+            <p>
+              <%= "捨てなかったもの" %>
+            </p>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.sidebar-menu -->
+  </div>
+  <!-- /.sidebar -->
+</aside>
