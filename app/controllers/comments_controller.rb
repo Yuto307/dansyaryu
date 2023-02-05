@@ -8,14 +8,12 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_user.comments.find(params[:id])
-      if @comment.update(comment_update_params)
-        render json: { comment: @comment }, status: :ok
-      else
-        render json: { comment: @comment, errors:
-          { messages: @comment.errors.full_messages } }, 
-          status: :bad_request
-      end
+    if @comment.update(comment_update_params)
+      render json: { comment: @comment }, status: :ok
+    else
+      render json: { comment: @comment, errors: { messages: @comment.errors.full_messages } }, status: :bad_request
     end
+  end
 
   def destroy
     @comment = current_user.comments.find(params[:id]) # current_userのコメント
