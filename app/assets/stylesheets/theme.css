@@ -18,6 +18,14 @@
   background-color: #f2ffe5;
 }
 
+.nonmark {
+  list-style-type: none;
+}
+
+.mar {
+  margin: auto;
+}
+
 .icon-sm {
   width: 2rem;
   height: 2rem;
