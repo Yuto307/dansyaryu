@@ -7,6 +7,25 @@
   line-height: 1.5rem;
 }
 
+.top-inner-text {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.bg {
+  background-color: #f2ffe5;
+}
+
+.nonmark {
+  list-style-type: none;
+}
+
+.mar {
+  margin: auto;
+}
+
 .icon-sm {
   width: 2rem;
   height: 2rem;
@@ -26332,7 +26351,7 @@ textarea.form-control-lg {
   }
 }
 .navbar-default {
-  background-color: #fff;
+  background-color: #e5ffe5;
   box-shadow: 0px 1px 3px rgba(3, 0, 71, 0.09);
 }
 .navbar-default .navbar-nav .nav-item .nav-link {
