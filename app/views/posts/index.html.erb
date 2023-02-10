@@ -10,11 +10,11 @@
   </div>
 
   <h3 class="side-title">カテゴリー</h3>
-  <ul class="col-md-4 list-unstyled d-flex">
+  <ul>
     <% @categories.each do |category| %>
-      <p class="mar">
+      <li>
         <%= link_to category.name, posts_path(category_id: category.id) %>
-      </p>
+      </li>
     <% end %>
   </ul>
   
