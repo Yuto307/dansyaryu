@@ -1,0 +1,51 @@
+<% content_for(:title, t('.title')) %>
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1 class="float-left mb-5"><%= (t 'profiles.show.title') %></h1>
+      <%= link_to (t 'profiles.show.edit'), edit_mypage_path, class: 'btn btn-success float-right' %>
+      <table class="table">
+        <tr>
+          <th scope="row"><%= (t 'profiles.show.full_name') %></th>
+          <td><%= @current_user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= (t 'profiles.show.mail') %></th>
+          <td><%= @current_user.email %></td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "投稿総数" %></th>
+          <td><%= @current_user.posts.count %>件</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "募集中の投稿" %></th>
+          <td><%= @current_user.posts.published.count %>件</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "下書き保存数" %></th>
+          <td><%= @current_user.posts.draft.count %>件</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "締め切った投稿数" %></th>
+          <td><%= @current_user.posts.closing.count %>件</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "捨てた総数" %></th>
+          <td><%= @current_user.posts.trash.count %>件</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "捨てなかった総数" %></th>
+          <td><%= @current_user.posts.untrash.count %>件</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "お気に入り数" %></th>
+          <td><%= @current_user.favorites.count %>件</td>
+        </tr>
+        <tr>
+          <th scope="row"><%= "ベスト断捨流獲得数" %></th>
+          <td><%= @current_user.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

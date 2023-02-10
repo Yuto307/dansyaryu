@@ -23,12 +23,8 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: %i[create destroy]
   resources :votes, only: %i[create destroy], shallow: true
+  resource :mypage, only: %i[show edit update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  namespace :mypage do
-    root 'profile#show'
-    resource :profile, only: %i[show update]
-    resource :password_change, only: %i[show update]
-  end
 
   namespace :admin do
     root to: 'dashboards#index'
