@@ -2,6 +2,7 @@ class MypagesController < ApplicationController
   before_action :set_user,only: %i[edit update]
 
   def show
+    @best_answers = BestAnswer.all
   end
 
   def edit
