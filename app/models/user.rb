@@ -55,4 +55,8 @@ class User < ApplicationRecord
   def best_answer?(comment)
     BestAnswer.where(user_id: id, comment_id: comment.id).exists?
   end
+
+  def best_count
+    Comment.joins(:best_answer).where(user_id: id).count
+  end
 end

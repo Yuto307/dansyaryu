@@ -4,7 +4,7 @@
     <div class="col-lg-10 offset-lg-1">
       <!-- 検索フォーム -->
       <form>
-        <%= render 'search_form', url: drafts_posts_path %>
+        <%= render 'search_form', url: draft_mypage_path %>
       </form>
     </div>
   </div>
@@ -13,14 +13,14 @@
   <div class="row">
     <div class="col-12">
       <div class="row">
-        <% if @draft_posts.present? %>
-          <%= render @draft_posts %>
+        <% if @draft.present? %>
+          <%= render @draft %>
         <% else %>
           <p><%= t('.no_result') %></p>
         <% end %>
       </div>
       <!-- ページネーション -->
-      <%= paginate @draft_posts %>
+      <%= paginate @draft %>
     </div>
   </div>
 </div>

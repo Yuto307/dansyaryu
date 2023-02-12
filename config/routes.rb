@@ -14,7 +14,6 @@ Rails.application.routes.draw do
     resource :closes, controller: 'posts/closes', only: %i[update]
     collection do
       get :favorites
-      get :drafts
       get :search
     end
     member do
@@ -23,7 +22,16 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: %i[create destroy]
   resources :votes, only: %i[create destroy], shallow: true
-  resource :mypage, only: %i[show edit update]
+  resource :mypage, only: %i[show edit update] do
+    collection do
+      get :post
+      get :published
+      get :draft
+      get :closing
+      get :trash
+      get :untrash
+    end
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   namespace :admin do

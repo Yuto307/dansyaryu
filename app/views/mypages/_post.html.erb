@@ -1,0 +1,43 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="post-id-<%= post.id %>">
+    <div class="card">
+      <%= image_tag post.img_url, size: '300x200', class: 'card-img-top'%>
+      <div class="card-body">
+        <h4 class="card-title">
+          <%= link_to post.title, post_path(post) %>
+        </h4>
+        <% if current_user.own?(post) %>
+            <%= render 'crud_menus', post: post %>
+        <% else %>
+            <%= render 'favorite_button', post: post %>
+        <% end %>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <%= icon 'far', 'user' %>
+            <%= post.user.name %>
+          </li></br>
+          <li class="list-inline-item">
+            <%= icon 'far', 'calendar' %>
+            <%= l(post.created_at, format: :short) %>
+          </li></br>
+          <li class="list-inline-item">
+            <%= "カテゴリー" %>
+            <% post.categories.each do |item| %>
+              <%= item.name %>
+            <% end %>
+          </li></br>
+          <li class="list-inline-item">
+            <%= "ステータス" %>
+            <%= post.status %>
+          </li></br>
+          <li class="list-inline-item">
+            <%= "締切" %>
+            <%= l post.deadline, format: :short %>
+          </li>
+        </ul>
+        <p class="card-text"><%= post.body %></p>
+      </div>
+    </div>
+  </div>
+</div>
+
