@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
-  
+
   before_action :require_login
   before_action :set_current_user
   add_flash_types :success, :info, :warning, :danger
@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    if @current_user == nil
-      redirect_to('/login')
-    end
+    return unless @current_user.nil?
+
+    redirect_to('/login')
   end
 
   private

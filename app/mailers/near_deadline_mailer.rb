@@ -8,6 +8,6 @@ class NearDeadlineMailer < ApplicationMailer
   def near_deadline(post)
     @post = post
     mail(to: post.user.email,
-         subject: "本日締め切りになる投稿があります")
+         subject: '本日締め切りになる投稿があります')
   end
 end

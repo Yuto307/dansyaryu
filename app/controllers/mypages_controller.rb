@@ -1,19 +1,18 @@
 class MypagesController < ApplicationController
-  before_action :set_user,only: %i[edit update]
+  before_action :set_user, only: %i[edit update]
 
   def show
     @best_answers = BestAnswer.all
   end
 
-  def edit
-  end
-      
+  def edit; end
+
   def update
     if @user.update(user_params)
       redirect_to mypage_path, success: t('.success')
     else
       flash.now[:danger] = (t '.fail')
-      render :edit 
+      render :edit
     end
   end
 
@@ -46,12 +45,13 @@ class MypagesController < ApplicationController
     @q = current_user.posts.where(status: :untrash).ransack(params[:q])
     @untrash = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
-      
+
   private
+
   def set_user
     @user = User.find(current_user.id)
   end
-      
+
   def user_params
     params.require(:user).permit(:name, :email)
   end
