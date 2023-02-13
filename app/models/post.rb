@@ -23,8 +23,8 @@ class Post < ApplicationRecord
     Time.current >= deadline
   end
 
-  #draft(下書き)であればreturn
-  #締切時間が過ぎていれば締切。過ぎていなければ公開のままにする
+  # draft(下書き)であればreturn
+  # 締切時間が過ぎていれば締切。過ぎていなければ公開のままにする
   def adjust_status
     return if draft?
 

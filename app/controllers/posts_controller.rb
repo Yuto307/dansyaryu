@@ -24,7 +24,7 @@ class PostsController < ApplicationController
     @q = current_user.posts.where(status: :draft).ransack(params[:q])
     @draft_posts = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
-  
+
   def search
     @results = @q.result
   end
@@ -81,7 +81,8 @@ class PostsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def post_params
-    params.require(:post).permit(:title, :body, :img, :img_cache, { category_ids: [] }, :status, :deadline).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :body, :img, :img_cache, { category_ids: [] }, :status,
+                                 :deadline).merge(user_id: current_user.id)
   end
 
   def ensure_user
@@ -90,5 +91,4 @@ class PostsController < ApplicationController
 
     redirect_to posts_path
   end
-
 end
