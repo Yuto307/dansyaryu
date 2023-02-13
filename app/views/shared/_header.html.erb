@@ -18,19 +18,15 @@
           <li class="nav-item d-flex align-items-center">
             <%= link_to '新規作成', new_post_path, class: 'btn btn-primary btn-sm me-2' %>
           </li>
-          <%= render 'shared/notifications' %>
           <li class="dropdown ms-2 d-inline-block">
             <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
               <div class="avatar avatar-md">
-                <%= image_tag 'sample.jpeg', class: 'rounded-circle avatar-sm' %>
+                <%= current_user.name %>
               </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end">
               <div class="dropdown-item">
                 <div class="d-flex">
-                  <div class="avatar avatar-md">
-                    <%= image_tag 'sample.jpeg', class: 'rounded-circle avatar-sm' %>
-                  </div>
                   <div class="ms-3 lh-1">
                     <h5 class="mb-1"><%= current_user.name %></h5>
                     <p class="mb-0 text-muted"><%= current_user.email %></p>
@@ -52,36 +48,26 @@
                     <i class="bi bi-person me-2"></i>自分の投稿
                   </a>
                 </li>
-              </ul>
-              <ul class="list-unstyled">
                 <li>
                   <a class="dropdown-item" href="/mypage/published">
                     <i class="bi bi-person me-2"></i>募集中の投稿
                   </a>
                 </li>
-              </ul>
-              <ul class="list-unstyled">
                 <li>
                   <a class="dropdown-item" href="/mypage/draft">
                     <i class="bi bi-person me-2"></i>下書き
                   </a>
                 </li>
-              </ul>
-              <ul class="list-unstyled">
                 <li>
                   <a class="dropdown-item" href="/mypage/closing">
                     <i class="bi bi-person me-2"></i>締め切り中の投稿
                   </a>
                 </li>
-              </ul>
-              <ul class="list-unstyled">
                 <li>
                   <a class="dropdown-item" href="/mypage/trash">
                     <i class="bi bi-person me-2"></i>捨てたもの
                   </a>
                 </li>
-              </ul>
-              <ul class="list-unstyled">
                 <li>
                   <a class="dropdown-item" href="/mypage/untrash">
                     <i class="bi bi-person me-2"></i>捨てなかったもの
