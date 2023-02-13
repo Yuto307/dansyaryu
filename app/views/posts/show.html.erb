@@ -20,6 +20,10 @@
                         <%= "決断する" %>
                       <% end %>
                     </li>
+                    <ul class='crud-menu-btn list-inline float-right', id=<%= "js-vote-button-for-post-#{@post.id}" %>>
+                      <li class="list-inline-item">捨てていい<%= @post.votes.trash.count %></li>
+                      <li class="list-inline-item">捨てないで<%= @post.votes.untrash.count %></li>
+                    </ul>
                   <% end %>
               <% else %>
                   <%= render 'posts/favorite_button', post: @post %>
@@ -34,6 +38,7 @@
                     <%= item.name %>
                   <% end %>
                 </li>
+                <li>状態　<%= @post.status %></li>
               </ul>
             </div>
           </div>

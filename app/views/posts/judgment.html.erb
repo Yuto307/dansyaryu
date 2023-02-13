@@ -13,18 +13,21 @@
             <div class='col-md-9'>
               <h3 class="d-inline"><%= @post.title %></h3>
               <% if current_user.own?(@post) %>
-                  <%= render 'crud_menus', post: @post %>
+                <ul class='crud-menu-btn list-inline float-right', id=<%= "js-vote-button-for-post-#{@post.id}" %>>
+                  <li class="list-inline-item">捨てていい<%= @post.votes.trash.count %></li>
+                  <li class="list-inline-item">捨てないで<%= @post.votes.untrash.count %></li>
+                </ul>
               <% else %>
-                  <%= render 'posts/favorite_button', post: @post %>
-                  <div class="row mb-3">
-                    <div class="col-lg-8 offset-lg-2">
-                      <%= form_with model: @vote, url: [@post, @vote], id: 'new_vote' do |f| %>
-                        <%= f.label :status %>
-                        <%= f.select :status, Vote.statuses.keys.map {|k| [I18n.t("enums.vote.status.#{k}"), k]} %>
-                        <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
-                      <% end %>
-                    </div>
+                <%= render 'posts/favorite_button', post: @post %>
+                <div class="row mb-3">
+                  <div class="col-lg-8 offset-lg-2">
+                    <%= form_with model: @vote, url: [@post, @vote], id: 'new_vote' do |f| %>
+                      <%= f.label :status %>
+                      <%= f.select :status, Vote.statuses.keys.map {|k| [I18n.t("enums.vote.status.#{k}"), k]} %>
+                      <%= f.submit t('defaults.post'), class: 'btn btn-primary' %>
+                    <% end %>
                   </div>
+                </div>
               <% end %>
               <ul class="list-inline">
                 <li class="list-inline-item">by <%= @post.user.name %></li>
@@ -39,15 +42,16 @@
             </div>
           </div>
           <p><%= simple_format(@post.body) %></p>
+          <%= form_with model: @post, local: true do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+            <div class="form-group">
+              <%= f.label :status %> </br>
+              <%= f.collection_radio_buttons :status, Post.statuses_i18n.slice(:trash, :untrash), :first , :last %>
+            </div>
+            <%= f.submit (t 'defaults.register'), class: "btn btn-primary", name: 'commit' %>
+          <% end %>
         </div>
       </article>
     </div>
   </div>
-  <%= form_with model: @post, local: true do |f| %>
-    <%= render 'shared/error_messages', object: f.object %>
-    <div class="form-group">
-      <%= f.label :status %> </br>
-      <%= f.collection_radio_buttons :status, Post.statuses_i18n.slice(:trash, :untrash), :first , :last %>
-    </div>
-    <%= f.submit (t 'defaults.register'), class: "btn btn-primary", name: 'commit' %>
-  <% end %>
+  

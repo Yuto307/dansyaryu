@@ -1,0 +1,6 @@
+<%= link_to favorite_path(current_user.favorites.find_by(post_id: post.id)),
+            id: "js-favorite-button-for-post-#{post.id}",
+            method: :delete,
+            remote: true do %>
+  <%= icon 'fas', 'star' %>
+<% end %>
