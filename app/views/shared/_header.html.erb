@@ -19,11 +19,9 @@
             <%= link_to '新規作成', new_post_path, class: 'btn btn-primary btn-sm me-2' %>
           </li>
           <li class="dropdown ms-2 d-inline-block">
-            <a class="rounded-circle" href="#" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-              <div class="avatar avatar-md">
-                <%= current_user.name %>
-              </div>
-            </a>
+            <p class="rounded-circle gin" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+              ユーザー名:<%= current_user.name %>
+            </p>
             <div class="dropdown-menu dropdown-menu-end">
               <div class="dropdown-item">
                 <div class="d-flex">
