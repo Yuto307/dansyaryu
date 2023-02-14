@@ -84,3 +84,5 @@ production:
   database: dansyaryu_production
   username: dansyaryu
   password: <%= ENV['DANSYARYU_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+
