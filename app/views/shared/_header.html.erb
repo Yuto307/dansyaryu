@@ -18,9 +18,14 @@
           <li class="nav-item d-flex align-items-center">
             <%= link_to '新規作成', new_post_path, class: 'btn btn-primary btn-sm me-2' %>
           </li>
-          <li class="dropdown ms-2 d-inline-block">
+          <li class="nav-item d-flex align-items-center">
             <p class="rounded-circle gin" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
               ユーザー名:<%= current_user.name %>
+            </p>
+          </li>
+          <li class="dropdown ms-2 d-flex">
+            <p class="gin" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+              <i class="fa-solid fa-gear fa-lg"></i>
             </p>
             <div class="dropdown-menu dropdown-menu-end">
               <div class="dropdown-item">
