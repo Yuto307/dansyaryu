@@ -18,32 +18,32 @@ class MypagesController < ApplicationController
 
   def post
     @q = current_user.posts.where.not(status: :draft).ransack(params[:q])
-    @post = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @post = results
   end
 
   def published
     @q = current_user.posts.where(status: :published).ransack(params[:q])
-    @published = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @published = results
   end
 
   def draft
     @q = current_user.posts.where(status: :draft).ransack(params[:q])
-    @draft = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @draft = results
   end
 
   def closing
     @q = current_user.posts.where(status: :closing).ransack(params[:q])
-    @closing = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @closing = results
   end
 
   def trash
     @q = current_user.posts.where(status: :trash).ransack(params[:q])
-    @trash = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @trash = results
   end
 
   def untrash
     @q = current_user.posts.where(status: :untrash).ransack(params[:q])
-    @untrash = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
+    @untrash = results
   end
 
   private
@@ -54,5 +54,9 @@ class MypagesController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email)
+  end
+
+  def results
+    @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page])
   end
 end
