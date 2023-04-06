@@ -6,9 +6,7 @@ class ClosesController < ApplicationController
     @post.status = @post.closed? ? :closing : :published
 
     if @post.valid?
-      Post.transaction do
-        @post.save!
-      end
+      @post.save
 
       flash[:notice] = @post.message_on_closing
 
