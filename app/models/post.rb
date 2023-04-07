@@ -12,6 +12,7 @@ class Post < ApplicationRecord
     validates :title
     validates :body
     validates :status
+    validates :deadline
   end
 
   enum status: { published: 0, draft: 1, closing: 2, trash: 3, untrash: 4 }
