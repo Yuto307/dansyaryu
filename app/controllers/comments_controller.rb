@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[edit destroy]
   def create
     @comment = current_user.comments.create(comment_params)
+    flash.now[:success] = (t '.success')
   end
 
   def edit; end
@@ -18,6 +19,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = current_user.comments.find(params[:id]) # current_userのコメント
     @comment.destroy!
+    flash.now[:success] = (t '.destroy')
   end
 
   private

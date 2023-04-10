@@ -47,7 +47,7 @@ ja:
       fail: 'ログインに失敗しました'
     destroy:
       success: 'ログアウトしました'
-  boards:
+  posts:
     index:
       title: '掲示板一覧'
       no_result: '掲示板がありません'
@@ -82,6 +82,7 @@ ja:
   comments:
     success: 'コメントを作成しました'
     fail: 'コメントを作成できませんでした'
+    destroy: 'コメントを削除しました'
   password_resets:
     new:
       title: 'パスワードリセット申請'

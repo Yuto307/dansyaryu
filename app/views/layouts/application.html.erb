@@ -12,10 +12,15 @@
   </head>
 
   <body class="bg">
-    <%= render 'shared/header' %>
-      <div class="py-3">
-        <%= yield %>
-      </div>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end %>
+    <%= render 'shared/flash_message' %>
+    <div class="py-3">
+      <%= yield %>
+    </div>
     <%= render 'shared/footer' %>
   </body>
 </html>
