@@ -12,22 +12,20 @@
             </div>
             <div class='col-md-9'>
               <h3 class="d-inline"><%= @post.title %></h3>
-              <% if current_user.own?(@post) %>
-                  <%= render 'crud_menus', post: @post %>
-                  <% if @post.closing? %>
-                    <li class="list-inline-item">
-                      <%= link_to judgment_post_path(@post) do %>
-                        <%= "決断する" %>
-                      <% end %>
-                    </li>
-                    <ul class='crud-menu-btn list-inline float-right', id=<%= "js-vote-button-for-post-#{@post.id}" %>>
-                      <li class="list-inline-item">捨てていい<%= @post.votes.trash.count %></li>
-                      <li class="list-inline-item">捨てないで<%= @post.votes.untrash.count %></li>
-                    </ul>
-                  <% end %>
-              <% else %>
-                  <%= render 'posts/favorite_button', post: @post %>
-                  <%= render 'posts/vote_button', post: @post %>
+              <% if logged_in? %>
+                <% if current_user.own?(@post) %>
+                    <%= render 'crud_menus', post: @post %>
+                    <% if @post.closing? %>
+                      <li class="list-inline-item">
+                        <%= link_to judgment_post_path(@post) do %>
+                          <%= "決断する" %>
+                        <% end %>
+                      </li>
+                    <% end %>
+                <% else %>
+                    <%= render 'posts/favorite_button', post: @post %>
+                    <%= render 'posts/vote_button', post: @post %>
+                <% end %>
               <% end %>
               <ul class="list-inline">
                 <li class="list-inline-item">by <%= @post.user.name %></li>
@@ -43,13 +41,20 @@
             </div>
           </div>
           <p><%= simple_format(@post.body) %></p>
+          <%= render 'posts/vote_counter', post: @post %>
+          <%= link_to "https://twitter.com/share?url=#{ request.url }&text=断捨流に捨てるか迷っているものを投稿しました！
+            %0a迷っているもの:#{ @post.title }%0a%0a詳細%0a#{ @post.body }%0a", target: '_blank' do %>
+            <i class="fab fa-twitter" style='color: #3399FF;'></i>シェア
+          <% end %>
         </div>
       </article>
     </div>
   </div>
 
   <!-- コメントフォーム -->
-  <%= render 'comments/form', { post: @post, comment: @comment } %>
+  <% if logged_in? %>
+    <%= render 'comments/form', { post: @post, comment: @comment } %>
+  <% end %>
 
   <!-- コメントエリア -->
   <%= render 'comments/comments', { comments: @comments } %>
