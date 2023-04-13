@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  skip_before_action :require_login, only: %i[index show]
   before_action :set_post, only: %i[edit update judgment destroy]
   before_action :ensure_user, only: %i[edit update judgment destroy]
 

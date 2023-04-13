@@ -30,6 +30,14 @@
   margin: 0mm 0mm 0mm 3mm;
 }
 
+.comment-trash {
+  background-color: #ffe2c6;
+}
+
+.comment-untrash {
+  background-color: #c6e2ff;
+}
+
 .icon-sm {
   width: 2rem;
   height: 2rem;

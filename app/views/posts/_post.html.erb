@@ -6,10 +6,12 @@
         <h4 class="card-title">
           <%= link_to post.title, post_path(post) %>
         </h4>
-        <% if current_user.own?(post) %>
+        <% if logged_in? %>
+          <% if current_user.own?(post) %>
             <%= render 'crud_menus', post: post %>
-        <% else %>
+          <% else %>
             <%= render 'favorite_button', post: post %>
+          <% end %>
         <% end %>
         <ul class="list-inline">
           <li class="list-inline-item">
@@ -35,7 +37,7 @@
             <%= l post.deadline, format: :short %>
           </li>
         </ul>
-        <p class="card-text"><%= post.body %></p>
+        <p class="card-text"><%= post.body.truncate(20) %></p>
       </div>
     </div>
   </div>
