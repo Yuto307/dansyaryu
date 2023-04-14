@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'user_sessions#destroy'
   get 'tos', to: 'pages#tos'
   get 'pp', to: 'pages#pp'
+  get 'usage', to: 'pages#usage'
   resources :users, only: %i[new create]
   resources :posts do
     resources :comments, only: %i[create update destroy], shallow: true do
