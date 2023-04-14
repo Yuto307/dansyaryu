@@ -9,5 +9,18 @@
     <p>知恵を借りる、あるいは理由を提案してもらう</p>
     <p>そうして背中を押す、時には押される</p>
     <p>そのための集いである</p>
+    <p><%= link_to '断捨流の極め方（サイト利用方法）', usage_path %></p></br>
+    <% if !logged_in? %>
+      <ul class="navbar-nav d-flex ms-auto mb-2 mb-lg-0">
+        <li class="nav-item align-items-center">
+          <div>まだ入門していない方はこちらから（新規登録）</div>
+          <%= link_to '入門登録', new_user_path, class: 'btn btn-primary btn-sm me-2' %>
+        </li>
+        <li class="nav-item align-items-center">
+          <div>入門済みの方はこちら（ログイン）</div>
+          <%= link_to '入場', login_path, class: 'btn btn-primary btn-sm me-2' %>
+        </li>
+      </ul>
+    <% end %>
   </div>
 </div>
