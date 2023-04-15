@@ -43,6 +43,7 @@ COPY . /$APP_NAME/
 
 RUN SECRET_KEY_BASE="$(bundle exec rake secret)" bin/rails assets:precompile assets:clean \
 && yarn install --production --frozen-lockfile \
+&& yarn add --bootstrap --jquery --popper.js \
 && yarn cache clean \
 && rm -rf /$APP_NAME/node_modules /$APP_NAME/tmp/cache
 
