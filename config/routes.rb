@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'tos', to: 'pages#tos'
   get 'pp', to: 'pages#pp'
   get 'usage', to: 'pages#usage'
+  get 'inquiry', to: 'pages#inquiry'
   resources :users, only: %i[new create]
   resources :posts do
     resources :comments, only: %i[create update destroy], shallow: true do
