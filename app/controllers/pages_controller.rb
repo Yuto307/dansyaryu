@@ -8,4 +8,6 @@ class PagesController < ApplicationController
   def top; end
 
   def usage; end
+
+  def inquiry; end
 end
