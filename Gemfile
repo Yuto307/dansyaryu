@@ -29,7 +29,6 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'carrierwave'
-gem 'fog'
 gem 'enum_help'
 gem 'font-awesome-sass'
 gem 'kaminari', git: 'https://github.com/kaminari/kaminari.git'
