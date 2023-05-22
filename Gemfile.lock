@@ -614,7 +614,6 @@ DEPENDENCIES
   byebug
   carrierwave
   config
-  dotenv
   dotenv-rails
   enum_help
   fog
