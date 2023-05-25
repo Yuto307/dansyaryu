@@ -1,4 +1,4 @@
-unless Rails.env.test?
+unless Rails.env.development? || Rails.env.test?
   CarrierWave.configure do |config|
     config.storage :fog
     config.fog_provider = 'fog/aws'
