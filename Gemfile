@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'carrierwave'
 gem 'fog'
+gem 'aws-sdk-s3', require: false
 gem 'dotenv-rails'
 gem 'enum_help'
 gem 'font-awesome-sass'

@@ -8,7 +8,7 @@ unless Rails.env.development? || Rails.env.test?
       provider: 'AWS',
       aws_access_key_id: ENV['DANSYARYU_ACCESS_KEY'],
       aws_secret_access_key: ENV['DANSYARYU_SECRET_KEY'],
-      region: 'ap-northeast-1',
+      region: ENV['DANSYARYU_REGION'],
       path_style: true
     }
   end
