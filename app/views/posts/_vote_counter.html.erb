@@ -1,5 +1,5 @@
 <ul class='crud-menu-btn list-inline float-right', id=<%= "js-vote-counter-for-post-#{@post.id}" %>>
-  <li class="list-inline-item">捨てていい<%= post.votes.trash.count %></li>
-  <li class="list-inline-item">捨てないで<%= post.votes.untrash.count %></li>
+  <li class="list-inline-item"><%= t('posts.index.trash') %><%= post.votes.trash.count %></li>
+  <li class="list-inline-item"><%= t('posts.index.untrash') %><%= post.votes.untrash.count %></li>
 </ul>
 

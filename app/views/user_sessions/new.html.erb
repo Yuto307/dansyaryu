@@ -6,24 +6,24 @@
         <!-- Card body -->
         <div class="card-body p-6">
           <div class="mb-4">
-            <h1 class="mb-1 fw-bold">Sign up</h1>
-            <span>Already have an account?
-              <%= link_to 'サインアップ', 'users/new', class: 'ms-1' %>
+            <h1 class="mb-1 fw-bold"><%= t('user_sessions.new.title') %></h1>
+            <span><%= t('user_sessions.new.already_have_an_account?') %>
+              <%= link_to t('user_sessions.new.sign_up'), 'users/new', class: 'ms-1' %>
             </span>
           </div>
           <!-- Form -->
           <%= form_with url: login_path do |f| %>
             <%#= render 'shared/error_messages', object: f.object %>
             <div class="mb-3">
-              <%= f.label :email %>
+              <%= f.label t('user_sessions.new.email') %>
               <%= f.email_field :email, class: 'form-control' %>
             </div>
             <div class="mb-3">
-              <%= f.label :password %>
+              <%= f.label t('user_sessions.new.password') %>
               <%= f.password_field :password, class: 'form-control' %>
             </div>
             <div class="d-grid">
-              <%= f.submit 'ログイン', class: 'btn btn-primary' %>
+              <%= f.submit t('defaults.login'), class: 'btn btn-primary' %>
             </div>
           <% end %>
         </div>
@@ -31,3 +31,4 @@
     </div>
   </div>
 </div>
+

@@ -9,17 +9,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item d-flex align-items-center">
-          <%= link_to '投稿一覧', posts_path, class: 'btn btn-primary btn-sm me-2' %>
+          <%= link_to t('defaults.posts'), posts_path, class: 'btn btn-primary btn-sm me-2' %>
         </li>
         <li class="nav-item d-flex align-items-center">
           <%= link_to 'お気に入り', favorites_posts_path, class: 'btn btn-primary btn-sm me-2' %>
         </li>
         <li class="nav-item d-flex align-items-center">
-          <%= link_to '新規作成', new_post_path, class: 'btn btn-primary btn-sm me-2' %>
+          <%= link_to t('posts.new.title'), new_post_path, class: 'btn btn-primary btn-sm me-2' %>
         </li>
         <li class="nav-item d-flex align-items-center">
           <p class="rounded-circle gin" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-            ユーザー名:<%= current_user.name %>
+            <%= t('users.new.user_name') %>:<%= current_user.name %>
           </p>
         </li>
         <li class="dropdown ms-2 d-flex">
@@ -39,7 +39,7 @@
             <ul class="list-unstyled">
               <li>
                 <a class="dropdown-item" href="/mypage">
-                  <i class="bi bi-person me-2"></i>マイページ
+                  <i class="bi bi-person me-2"></i><%= t('mypages.show.mypage') %>
                 </a>
               </li>
             </ul>
@@ -47,40 +47,40 @@
             <ul class="list-unstyled">
               <li>
                 <a class="dropdown-item" href="/mypage/post">
-                  <i class="bi bi-person me-2"></i>自分の投稿
+                  <i class="bi bi-person me-2"></i><%= t('mypages.show.my_posts') %>
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="/mypage/published">
-                  <i class="bi bi-person me-2"></i>募集中の投稿
+                  <i class="bi bi-person me-2"></i><%= t('mypages.show.wanted_posts') %>
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="/mypage/draft">
-                  <i class="bi bi-person me-2"></i>下書き
+                  <i class="bi bi-person me-2"></i><%= t('mypages.show.draft_posts') %>
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="/mypage/closing">
-                  <i class="bi bi-person me-2"></i>締め切り中の投稿
+                  <i class="bi bi-person me-2"></i><%= t('mypages.show.closiing_posts') %>
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="/mypage/trash">
-                  <i class="bi bi-person me-2"></i>捨てたもの
+                  <i class="bi bi-person me-2"></i><%= t('mypages.show.trash_posts') %>
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="/mypage/untrash">
-                  <i class="bi bi-person me-2"></i>捨てなかったもの
+                  <i class="bi bi-person me-2"></i><%= t('mypages.show.untrash_posts') %>
                 </a>
               </li>
             </ul>
             <div class="dropdown-divider"></div>
             <ul class="list-unstyled">
               <li>
-                <%= link_to logout_path, method: :get, data: { confirm: 'ログアウトします' }, class: 'dropdown-item' do %>
-                  <i class="bi bi-box-arrow-left me-2"></i>ログアウト
+                <%= link_to logout_path, method: :get, data: { confirm: t('defaults.message.logout?') }, class: 'dropdown-item' do %>
+                  <i class="bi bi-box-arrow-left me-2"></i><%= t('defaults.logout') %>
                 <% end %>
               </li>
             </ul>

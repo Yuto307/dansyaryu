@@ -33,6 +33,7 @@ ja:
         body: '来歴'
         name: '投稿者'
         img: 'サムネイル'
+        category: 'カテゴリー'
         deadline: '締め切り'
         status: '状態'
         created_at: '作成日時'

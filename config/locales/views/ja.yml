@@ -4,6 +4,7 @@ ja:
     login: 'ログイン'
     register: '登録する'
     logout: 'ログアウト'
+    logout?: 'ログアウトしますか?'
     post: '投稿'
     search: '検索'
     search_word: '検索ワード'
@@ -16,8 +17,12 @@ ja:
     show: '詳細'
     edit: '編集'
     delete: '削除'
+    what_dansyaryu?: '断捨流とは?'
+    how_to_use_site: '断捨流の極め方(サイト利用方法)'
+    inquiry: 'お問い合わせ'
     message:
       require_login: 'ログインしてください'
+      logout?: 'ログアウトしますか?'
       created: '%{item}を作成しました'
       not_created: '%{item}を作成できませんでした'
       updated: "%{item}を更新しました"
@@ -33,13 +38,21 @@ ja:
   users:
     new:
       title: 'ユーザー登録'
-      to_login_page: 'ログインページへ'
+      user_name: 'ユーザー名'
+      already_have_an_account?: 'ユーザー登録済みの方は'
+      to_login_page: 'こちら(ログインページへ)'
+      terms_of_service: '利用規約'
+      privacy_policy: 'プライバシーポリシー'
     create:
       success: 'ユーザー登録が完了しました'
       fail: 'ユーザー登録に失敗しました'
   user_sessions:
     new:
       title: 'ログイン'
+      already_have_an_account?: 'ユーザー登録がお済みでない方は'
+      sign_up: 'こちら(ユーザー登録ページへ)'
+      email: 'メールアドレス'
+      password: ' パスワード'
       to_register_page: '登録ページへ'
       forget_password: 'パスワードをお忘れの方はこちら'
     create:
@@ -51,8 +64,21 @@ ja:
     index:
       title: '掲示板一覧'
       no_result: '掲示板がありません'
+      posting_date: '投稿日時'
+      status: '投稿ステータス'
+      deadline: '投票締め切り日時'
+      total_comments: 'コメント数'
+      trash: '捨てていい'
+      untrash: '捨てないで'
+      contributor: '投稿者'
+      judgment: '決断する'
+      share: 'シェア'
+      vote_for_trash: '捨てていいに投票する'
+      vote_for_untrash: '捨てないでに投票する'
+      voted: 'に投票済み'
+      withdraw_vote: '投票を撤回する'
     new:
-      title: '掲示板作成'
+      title: '新規作成'
     create:
       success: '掲示板を作成しました'
       fail: '掲示板を作成できませんでした'
@@ -67,13 +93,30 @@ ja:
       title: '掲示板編集'
     destroy:
       success: '掲示板を削除しました'
-  profiles:
+  categories:
+    category: 'カテゴリー'
+  mypages:
     show:
       title: 'プロフィール'
+      mypage: 'マイページ'
+      my_posts: '自分の投稿'
+      wanted_posts: '募集中の投稿'
+      draft_posts: '下書き'
+      closing_posts: '締め切り中の投稿'
+      trash_posts: '捨てたもの'
+      untrash_posts: '捨てなかったもの'
       edit: '編集'
       mail: 'メール'
-      full_name: '氏名'
-      avatar: 'アバター'
+      name: 'ユーザーネーム'
+      total_posts: '投稿総数'
+      total_wanted_posts: '募集中の投稿数'
+      total_saved_drafts: '下書き保存数'
+      total_deadline_posts: '締め切り中の投稿数'
+      total_trash_posts: '捨てた総数'
+      total_untrash_posts: '捨てなかった総数'
+      total_bestanswer_comments: 'ベスト断捨流獲得数'
+      posts: '件'
+      comments: '件'
     edit:
       title: 'プロフィール編集'
     update:

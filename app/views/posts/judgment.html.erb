@@ -14,8 +14,8 @@
               <h3 class="d-inline"><%= @post.title %></h3>
               <% if current_user.own?(@post) %>
                 <ul class='crud-menu-btn list-inline float-right', id=<%= "js-vote-button-for-post-#{@post.id}" %>>
-                  <li class="list-inline-item">捨てていい<%= @post.votes.trash.count %></li>
-                  <li class="list-inline-item">捨てないで<%= @post.votes.untrash.count %></li>
+                  <li class="list-inline-item"><%= t('posts.index.trash') %><%= @post.votes.trash.count %></li>
+                  <li class="list-inline-item"><%= t('posts.index.untrash') %><%= @post.votes.untrash.count %></li>
                 </ul>
               <% else %>
                 <%= render 'posts/favorite_button', post: @post %>
@@ -30,10 +30,10 @@
                 </div>
               <% end %>
               <ul class="list-inline">
-                <li class="list-inline-item">by <%= @post.user.name %></li>
-                <li class="list-inline-item"><%= l @post.created_at, format: :short %></li></br>
+                <li class="list-inline-item"><%= t('posts.index.contributor') %>：<%= @post.user.name %></li><br>
+                <li class="list-inline-item"><%= t('posts.index.posting_date') %>：<%= l @post.created_at, format: :short %></li></br>
                 <li class="list-inline-item">
-                  <%= "カテゴリー" %>
+                  <%= t('categories.category') %>：
                   <% @post.categories.each do |item| %>
                     <%= item.name %>
                   <% end %>
@@ -48,7 +48,7 @@
               <%= f.label :status %> </br>
               <%= f.collection_radio_buttons :status, Post.statuses_i18n.slice(:trash, :untrash), :first , :last %>
             </div>
-            <%= f.submit (t 'defaults.register'), class: "btn btn-primary", name: 'commit' %>
+            <%= f.submit (t 'posts.index.judgment'), class: "btn btn-primary", name: 'commit' %>
           <% end %>
         </div>
       </article>
