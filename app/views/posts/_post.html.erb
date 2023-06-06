@@ -9,8 +9,6 @@
         <% if logged_in? %>
           <% if current_user.own?(post) %>
             <%= render 'crud_menus', post: post %>
-          <% else %>
-            <%= render 'favorite_button', post: post %>
           <% end %>
         <% end %>
         <ul class="list-inline">
