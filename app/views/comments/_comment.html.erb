@@ -1,8 +1,8 @@
 <tr id="comment-<%= comment.id %>" class="comment-<%= comment.status %>">
   <td>
-    <h3 class="small">投稿者 : <%= comment.user.name %></h3>
+    <h3 class="small"><%= t('posts.index.contributor') %> : <%= comment.user.name %></h3>
     <div id="js-comment-<%= comment.id %>">
-      <%= simple_format(comment.status) %>
+      <%= simple_format(comment.status_i18n) %>
       <%= simple_format(comment.content) %>
     </div>
     <div id="js-textarea-comment-box-<%= comment.id %>" style="display: none;">

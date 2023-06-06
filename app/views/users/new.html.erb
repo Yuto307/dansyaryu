@@ -6,9 +6,9 @@
         <!-- Card body -->
         <div class="card-body p-6">
           <div class="mb-4">
-            <h1 class="mb-1 fw-bold">Sign up</h1>
-            <span>Already have an account?
-              <%= link_to 'ログイン', login_path, class: 'ms-1' %>
+            <h1 class="mb-1 fw-bold"><%= t('users.new.title') %></h1>
+            <span><%= t('users.new.already_have_an_account?') %>
+              <%= link_to t('users.new.to_login_page'), login_path, class: 'ms-1' %>
             </span>
           </div>
           <!-- Form -->
@@ -33,12 +33,13 @@
             <div class="mb-3">
               <div class="form-check">
               <%= f.check_box :agreement, :as => :boolean, checked:false %>
-                <span>I agree to the <%= link_to '利用規約', tos_path %> and
-											<%= link_to 'プライバシーポリシー', pp_path %></span></label>
+                <span>私は <%= link_to t('users.new.terms_of_service'), tos_path %> と
+											<%= link_to t('users.new.privacy_policy'), pp_path %>
+                に同意します。</span></label>
               </div>
             </div>
             <div class="d-grid">
-              <%= f.submit '登録', class: 'btn btn-primary' %>
+              <%= f.submit t('defaults.register'), class: 'btn btn-primary' %>
             </div>
           <% end %>
         </div>

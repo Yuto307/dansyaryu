@@ -18,7 +18,7 @@
                     <% if @post.closing? %>
                       <li class="list-inline-item">
                         <%= link_to judgment_post_path(@post) do %>
-                          <%= "決断する" %>
+                          <%= t('posts.index.judgment') %>
                         <% end %>
                       </li>
                     <% end %>
@@ -28,15 +28,15 @@
                 <% end %>
               <% end %>
               <ul class="list-inline">
-                <li class="list-inline-item">by <%= @post.user.name %></li>
-                <li class="list-inline-item"><%= l @post.created_at, format: :short %></li></br>
+                <li class="list-inline-item"><%= t('posts.index.contributor') %>：<%= @post.user.name %></li></br>
+                <li class="list-inline-item"><%= t('posts.index.posting_date') %>：<%= l @post.created_at, format: :short %></li></br>
                 <li class="list-inline-item">
-                  <%= "カテゴリー" %>
+                  <%= t('categories.category') %>：
                   <% @post.categories.each do |item| %>
                     <%= item.name %>
                   <% end %>
                 </li>
-                <li>状態　<%= @post.status %></li>
+                <li><%= t('posts.index.status') %>：<%= @post.status_i18n %></li>
               </ul>
             </div>
           </div>
@@ -44,7 +44,7 @@
           <%= render 'posts/vote_counter', post: @post %>
           <%= link_to "https://twitter.com/share?url=#{ request.url }&text=断捨流に捨てるか迷っているものを投稿しました！
             %0a迷っているもの:#{ @post.title }%0a%0a詳細%0a#{ @post.body }%0a", target: '_blank' do %>
-            <i class="fab fa-twitter" style='color: #3399FF;'></i>シェア
+            <i class="fab fa-twitter" style='color: #3399FF;'></i><%= t('posts.index.share') %>
           <% end %>
         </div>
       </article>

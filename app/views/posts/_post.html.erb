@@ -19,22 +19,26 @@
             <%= post.user.name %>
           </li></br>
           <li class="list-inline-item">
-            <%= icon 'far', 'calendar' %>
+            <%= t('posts.index.posting_date') %>：
             <%= l(post.created_at, format: :short) %>
           </li></br>
           <li class="list-inline-item">
-            <%= "カテゴリー" %>
+            <%= t('categories.category') %>：
             <% post.categories.each do |item| %>
               <%= item.name %>
             <% end %>
           </li></br>
           <li class="list-inline-item">
-            <%= "ステータス" %>
-            <%= post.status %>
+            <%= t('posts.index.status') %>：
+            <%= post.status_i18n %>
           </li></br>
           <li class="list-inline-item">
-            <%= "締切" %>
+            <%= t('posts.index.deadline') %>：
             <%= l post.deadline, format: :short %>
+          </li></br>
+          <li class="list-inline-item">
+            <%= t('posts.index.total_comments') %>
+            <%= post.comments.count %>
           </li>
         </ul>
         <p class="card-text"><%= post.body.truncate(20) %></p>
@@ -42,4 +46,3 @@
     </div>
   </div>
 </div>
-
