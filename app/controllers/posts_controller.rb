@@ -51,6 +51,9 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @vote = Vote.find_by(post: @post, user: current_user) || Vote.new
+    if @post.draft?
+      ensure_user
+    end
   end
 
   def edit; end
