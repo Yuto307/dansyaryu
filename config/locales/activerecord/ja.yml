@@ -27,6 +27,7 @@ ja:
         password: 'パスワード'
         password_confirmation: 'パスワード(確認)'
         role: '権限'
+        agreement: '利用規約とプライバシーポリシー'
       post:
         id: 'ID'
         title: 'タイトル'
